@@ -7,12 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IEventBusPublisher, NatsPublisher>();
 builder.Services.AddSingleton<ICursorService, NatsCursorService>();
 
-builder.Services.AddSingleton<IEventCreatorServiceFactory, EventCreatorServiceFactory>();
+builder.Services.AddSingleton<EventCreatorServiceFactory, EventCreatorServiceFactory>();
 
 builder.Services.AddHostedService<DeviceWorker>();
 
 var app = builder.Build();
-
-app.MapGet("/", () => "Hello World!");
 
 app.Run();

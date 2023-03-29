@@ -35,7 +35,7 @@ namespace WebApplication3
             var currentCursor = cursor.GetCursor(cursorKey);
             var readRows = await reader.BatchReadNext(currentCursor);
 
-            var events = eventCreator.CreateEvents(readRows.Data);
+            var events = eventCreator.CreateEvents(readRows.Data, cache);
 
             foreach (var @event in events)
             {

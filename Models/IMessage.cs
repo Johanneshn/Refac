@@ -6,5 +6,5 @@
         string Message { get; }
     }
 
-    public record DeviceProvisionedEvent(string Id, string Message, string sourceId) : IMessage;
+    public record DeviceProvisionedEvent(string Id, string Message, string SourceId) : IMessage;
 }

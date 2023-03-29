@@ -1,10 +1,15 @@
 ﻿namespace WebApplication3.Infrastructure
 {
-    public class DeviceCache : ICacheService
+    public class RegistryCache : ICacheService
     {
+        private readonly ICacheService deviceCache;
         private bool isSynced = false;
-
         private Dictionary<string, string> cache = new();
+
+        public RegistryCache(ICacheService deviceCache)
+        {
+            this.deviceCache = deviceCache;
+        }
 
         public void Add(string key, object value)
         {
@@ -13,7 +18,7 @@
 
         public bool IsSynced()
         {
-            return isSynced;
+            return deviceCache.IsSynced() && isSynced;
         }
 
         public async Task Sync()

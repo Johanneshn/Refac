@@ -4,7 +4,7 @@ public class DeviceWorker : BackgroundService
 {
     private readonly IEventBaseService eventCreatorService;
 
-    public DeviceWorker(IEventCreatorServiceFactory factory)
+    public DeviceWorker(EventCreatorServiceFactory factory)
     {
         eventCreatorService = factory.CreateDeviceService();
     }
