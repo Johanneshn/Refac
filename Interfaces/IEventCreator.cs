@@ -2,8 +2,8 @@
 
 namespace WebApplication3.Interfaces
 {
-    public interface IEventCreator
+    public interface IEventCreator<T>
     {
-        IEnumerable<IMessage> CreateEvents(DataTable data, ICacheService cache);
+        IEnumerable<IMessage> CreateEvents(DataTable data, ICacheService<T> cache);
     }
 }

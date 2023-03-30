@@ -5,20 +5,20 @@ using WebApplication3;
 using WebApplication3.Infrastructure;
 using WebApplication3.Proto;
 
-public class DeviceWorker : BackgroundService
+public class PositionWorker : BackgroundService
 {
-    private readonly IEventBaseService<Provision> deviceEventService;
+    private readonly IEventBaseService<Position> eventService;
 
-    public DeviceWorker(IEventBaseService<Provision> eventBaseService)
+    public PositionWorker(IEventBaseService<Position> eventBaseService)
     {
-        deviceEventService = eventBaseService;
+        eventService = eventBaseService;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            await deviceEventService.Execute();
+            await eventService.Execute();
             await Task.Delay(1000);
         }
     }

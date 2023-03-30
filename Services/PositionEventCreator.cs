@@ -4,13 +4,13 @@ using WebApplication3.Proto;
 
 namespace WebApplication3
 {
-    internal class DeviceEventCreator : IEventCreator<Provision>
+    internal class PositionEventCreator : IEventCreator<Position>
     {
-        public DeviceEventCreator()
+        public PositionEventCreator()
         {
         }
 
-        public IEnumerable<IMessage> CreateEvents(DataTable dataSet, ICacheService<Provision> cache)
+        public IEnumerable<IMessage> CreateEvents(DataTable dataSet, ICacheService<Position> cache)
         {
             var events = new List<IMessage>();
 

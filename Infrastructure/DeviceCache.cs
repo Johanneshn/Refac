@@ -1,6 +1,8 @@
-﻿namespace WebApplication3.Infrastructure
+﻿using WebApplication3.Proto;
+
+namespace WebApplication3.Infrastructure
 {
-    public class DeviceCache : ICacheService
+    public class DeviceCache : ICacheService<Provision>
     {
         private bool isSynced = false;
 

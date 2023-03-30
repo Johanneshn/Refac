@@ -25,4 +25,25 @@ public static class Helpers
 
         return deviceTable;
     }
+
+    public static DataTable Positions(int cursor)
+    {
+        var first = cursor + 1;
+
+        DataTable positionTable = new DataTable();
+        positionTable.Columns.Add(new DataColumn()
+        {
+            ColumnName = "id",
+            DataType = typeof(int)
+        });
+        positionTable.Columns.Add(new DataColumn()
+        {
+            ColumnName = "position",
+            DataType = typeof(string)
+        });
+
+        positionTable.Rows.Add(new object[] { first, "position" });
+
+        return positionTable;
+    }
 }

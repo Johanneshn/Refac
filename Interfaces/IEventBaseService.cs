@@ -1,6 +1,8 @@
-﻿namespace WebApplication3
+﻿using WebApplication3.Interfaces;
+
+namespace WebApplication3
 {
-    public interface IEventBaseService
+    public interface IEventBaseService<T>
     {
         Task Execute();
     }

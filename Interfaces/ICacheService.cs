@@ -1,6 +1,6 @@
 ﻿namespace WebApplication3
 {
-    public interface ICacheService
+    public interface ICacheService<T>
     {
         bool IsSynced();
 

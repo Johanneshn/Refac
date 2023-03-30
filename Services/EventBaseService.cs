@@ -1,26 +1,26 @@
-﻿using WebApplication3.Interfaces;
+﻿using Microsoft.AspNetCore.SignalR;
+using WebApplication3.Interfaces;
 
 namespace WebApplication3
 {
-    public class EventBaseService : IEventBaseService
+    public class EventBaseService<T> : IEventBaseService<T>
     {
-        private readonly ICertReader reader;
+        private readonly ICertReader<T> reader;
         private readonly IEventBusPublisher publisher;
-        private readonly IEventCreator eventCreator;
+        private readonly IEventCreator<T> eventCreator;
         private readonly ICursorService cursor;
-        private readonly ICacheService cache;
-        private readonly string serviceName;
+        private readonly ICacheService<T> cache;
+        private readonly string serviceName = typeof(T).Name;
         private readonly string cursorKey;
 
-        public EventBaseService(ICertReader reader, IEventBusPublisher publisher, IEventCreator eventCreator,
-            ICursorService cursor, ICacheService cache, string serviceName)
+        public EventBaseService(ICertReader<T> reader, IEventBusPublisher publisher, IEventCreator<T> eventCreator,
+            ICursorService cursor, ICacheService<T> cache)
         {
             this.reader = reader;
             this.publisher = publisher;
             this.eventCreator = eventCreator;
             this.cursor = cursor;
             this.cache = cache;
-            this.serviceName = serviceName;
             cursorKey = $"{serviceName}Cursor";
         }
 
